@@ -1,23 +1,21 @@
-import logo from './logo.svg';
 import './App.css';
+import React, { Component } from 'react';
+import MusicPlayer from './karaoke.js'; // เปลี่ยนชื่อตัวแปรจาก Karaoke เป็น MusicPlayer
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <MusicPlayer/>
+      <div style={{ 
+        position: 'fixed', 
+        bottom: '10px', 
+        width: '100%', 
+        textAlign: 'center',
+        fontSize: '14px',
+        color: '#666'
+      }}>
+        Pantakarn Chuayrod 6603052411024
+      </div>
     </div>
   );
 }

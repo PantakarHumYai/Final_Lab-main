@@ -1,37 +1,37 @@
-//Nitipoom Gongfu 6603052421160
+//Pantakarn Chuayrod 6603052411024
 import React, { useRef, useState } from 'react';
 
 export default function Karaoke() {
-    const [total, setTotal] = useState(0);
-    const noCard = useRef();
-    const haveCard = useRef();
-    const noCardRadio = useRef();
-    const haveCardRadio = useRef();
+    const [totalPrice, setTotalPrice] = useState(0);
+    const regularHoursInput = useRef();
+    const studentHoursInput = useRef();
+    const regularRadio = useRef();
+    const studentRadio = useRef();
 
     const calculateTotal = () => {
-        const noCardHour = noCard.current.value;
-        const haveCardHour = haveCard.current.value;
-        const noCardRate = 120;
-        const haveCardRate = 80;
+        const regularHours = regularHoursInput.current.value;
+        const studentHours = studentHoursInput.current.value;
+        const regularRate = 120;
+        const studentRate = 80;
         
-        let total = 0;
+        let totalPrice = 0;
 
-        if (noCardRadio.current.checked) {
-            if (noCardHour === "") {
+        if (regularRadio.current.checked) {
+            if (regularHours === "") {
                 alert("กรุณากรอกจำนวนชั่วโมง");
                 return;
             }
-            total = noCardHour * noCardRate;
+            totalPrice = regularHours * regularRate;
 
-        } else if (haveCardRadio.current.checked) {
-            if (haveCardHour === "") {
+        } else if (studentRadio.current.checked) {
+            if (studentHours === "") {
                 alert("กรุณากรอกจำนวนชั่วโมง");
                 return;
             }
-            total = haveCardHour * haveCardRate;
+            totalPrice = studentHours * studentRate;
         }
 
-        setTotal(total);
+        setTotalPrice(totalPrice);
     };
     const borderStyle = {
         border: '2px solid #000000',
@@ -45,19 +45,19 @@ export default function Karaoke() {
                     <tr>
                         <td>
                             <br />&nbsp;&nbsp;
-                            <input type="radio" name="c1" ref={noCardRadio} /> ไม่มีบัตรนักศึกษา <br />
+                            <input type="radio" name="c1" ref={regularRadio} /> ไม่มีบัตรนักศึกษา <br />
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ชั่วโมงละ 120 บาท จำนวน 
-                            <input type="text" size="2" ref={noCard} /> ชั่วโมง <br />
+                            <input type="text" size="2" ref={regularHoursInput} /> ชั่วโมง <br />
                             &nbsp;&nbsp;
-                            <input type="radio" name="c1" ref={haveCardRadio} /> มีบัตรนักศึกษา <br />
+                            <input type="radio" name="c1" ref={studentRadio} /> มีบัตรนักศึกษา <br />
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ชั่วโมงละ 80 บาท จำนวน 
-                            <input type="text" size="2" ref={haveCard} /> ชั่วโมง <br /><br />
+                            <input type="text" size="2" ref={studentHoursInput} /> ชั่วโมง <br /><br />
                         </td>
                     </tr>
                 </tbody>
             </table><br />
             <button onClick={calculateTotal}>คิดเงิน</button><br />
-            รวมเป็นเงินทั้งสิ้น = <input type="text" value={total} readOnly /> บาท
+            รวมเป็นเงินทั้งสิ้น = <input type="text" value={totalPrice} readOnly /> บาท
         </div>
     );
 }
